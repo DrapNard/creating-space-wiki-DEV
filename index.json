@@ -1,0 +1,16 @@
+[
+    {
+        "category": "Category1",
+        "page": [
+            { "title": "Page 1", "url": "./categories/category1/page1.html" },
+            { "title": "Page 2", "url": "./categories/category1/page2.html" }
+        ]
+    },
+    {
+        "category": "Category2",
+        "pages": [
+            { "title": "Page 3", "url": "./categories/category2/page3.html" },
+            { "title": "Page 4", "url": "./categories/category2/page4.html" }
+        ]
+    }
+]
