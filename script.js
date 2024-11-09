@@ -17,8 +17,7 @@ fetch('./index.json')
 // Function to add a page to the navigation menu under its category
 function addPageToMenu(directory, pageUrl, pageTitle) {
 // Remove the base directory from the category path
-const relativeDirectory = directory.replace(baseDirectory, '').replace(/\/$/, '');
-const categoryPath = relativeDirectory.split('/').filter(Boolean);
+const categoryPath = directory.split('/').filter(Boolean);
 
 // Traverse or create the nested list structure
 let currentMenu = $('#nav-menu');
