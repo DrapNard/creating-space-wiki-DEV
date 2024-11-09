@@ -1,6 +1,6 @@
 // Load JSON data from index.json file
 $(document).ready(() => {
-    loadMenuState(); // Load the saved menu state first
+    loadMenuState(); // Load saved state first to ensure it's present before adding new items
 
     fetch('./index.json')
         .then(response => response.json())
@@ -13,7 +13,7 @@ $(document).ready(() => {
                     addPageToMenu(category, page.url, page.title);
                 });
             });
-            saveMenuState(); // Save the menu state after adding all items
+            saveMenuState(); // Save the updated state after adding all items
         })
         .catch(error => console.error('Error loading JSON:', error));
 });
@@ -41,7 +41,7 @@ function addPageToMenu(directory, pageUrl, pageTitle) {
     const pageListItem = $('<li>').append(pageLink);
     currentMenu.append(pageListItem);
 
-    saveMenuState(); // Save the menu state each time an item is added
+    saveMenuState(); // Save the menu state each time an item is added to ensure consistency
 }
 
 // Function to convert a file name to a more readable format
