@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const baseDirectory = 'categories/'; // Absolute path to the base directory
+    const baseDirectory = './categories/'; // Absolute path to the base directory
     const scannedDirectories = new Set();  // Track scanned directories
     const addedPages = new Set();  // Track added pages to avoid duplicates
 
