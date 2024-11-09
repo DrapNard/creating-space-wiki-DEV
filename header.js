@@ -1,5 +1,5 @@
 // Cache-busting by appending a timestamp to the request URL
-const cacheBustedUrl = `header.html?v=${new Date().getTime()}`;
+const cacheBustedUrl = `./header.html?v=${new Date().getTime()}`;
 
 // Load the header partial with cache-busting
 fetch(cacheBustedUrl)
