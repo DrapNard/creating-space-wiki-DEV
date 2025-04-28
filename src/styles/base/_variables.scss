@@ -1,0 +1,48 @@
+// Import themes
+@use '../themes/light' as light;
+@use '../themes/dark' as dark;
+
+// Default theme (dark)
+$primary-color: dark.$primary-color;
+$secondary-color: dark.$secondary-color;
+$link-color: dark.$link-color;
+$background: dark.$background;
+$background-dark: dark.$background-dark;
+$background-darker: dark.$background-darker;
+$text-color: dark.$text-color;
+$border-color: dark.$border-color;
+$sidebar-width: 280px;
+
+// Theme switching
+:root[data-theme='dark'] {
+  --primary-color: #{dark.$primary-color};
+  --secondary-color: #{dark.$secondary-color};
+  --link-color: #{dark.$link-color};
+  --background: #{dark.$background};
+  --background-dark: #{dark.$background-dark};
+  --background-darker: #{dark.$background-darker};
+  --text-color: #{dark.$text-color};
+  --border-color: #{dark.$border-color};
+}
+
+:root[data-theme='light'] {
+  --primary-color: #{light.$primary-color};
+  --secondary-color: #{light.$secondary-color};
+  --link-color: #{light.$link-color};
+  --background: #{light.$background};
+  --background-dark: #{light.$background-dark};
+  --background-darker: #{light.$background-darker};
+  --text-color: #{light.$text-color};
+  --border-color: #{light.$border-color};
+}
+
+:export {
+  primaryColor: $primary-color;
+  secondaryColor: $secondary-color;
+  linkColor: $link-color;
+  background: $background;
+  backgroundDark: $background-dark;
+  backgroundDarker: $background-darker;
+  textColor: $text-color;
+  borderColor: $border-color;
+}

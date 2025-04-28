@@ -1,0 +1,39 @@
+@use 'sass:color';
+@use '../base/variables' as *;
+
+#toc {
+  background-color: $background-darker;
+  border: 1px solid $border-color;
+  padding: 10px;
+  margin-bottom: 20px;
+  display: inline-block;
+
+  h2 {
+    color: $primary-color;
+    font-size: 1.4em;
+    margin: 0 0 10px 0;
+    border-bottom: none;
+  }
+
+  ul {
+    padding-left: 10px;
+    margin: 0;
+
+    li {
+      margin-bottom: 5px;
+
+      ul {
+        margin-top: 5px;
+        margin-left: 15px;
+      }
+
+      a {
+        color: $link-color;
+        
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

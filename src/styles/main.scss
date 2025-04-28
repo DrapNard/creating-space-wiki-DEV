@@ -1,0 +1,24 @@
+@use 'sass:color';
+@use 'base/variables' as *;
+
+// Base styles
+@use 'base/reset';
+@use 'base/typography';
+
+// Components
+@use 'components/sidebar';
+@use 'components/content';
+@use 'components/toc';
+@use 'components/wiki-editor';
+@use 'components/home';
+@use 'components/modal';
+
+// Layout
+@use 'layout/layout';
+
+// Apply theme colors to body
+body {
+  background-color: var(--background-darker);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}

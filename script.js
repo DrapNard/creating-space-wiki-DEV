@@ -1,21 +1,44 @@
 // Load JSON data from index.json file
 $(document).ready(() => {
-    loadMenuState(); // Load saved state first to ensure it's present before adding new items
+    try {
+        loadMenuState(); // Load saved state first to ensure it's present before adding new items
 
-    fetch('./index.json')
-        .then(response => response.json())
-        .then(jsonData => {
-            jsonData.forEach(categoryObj => {
-                const category = categoryObj.category;
-                const pages = categoryObj.page || categoryObj.pages;
+        fetch('./index.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(jsonData => {
+                if (!Array.isArray(jsonData)) {
+                    throw new Error('Invalid JSON data format');
+                }
 
-                pages.forEach(page => {
-                    addPageToMenu(category, page.url, page.title);
+                jsonData.forEach(categoryObj => {
+                    const category = categoryObj.category;
+                    const pages = categoryObj.page || categoryObj.pages || [];
+
+                    if (!Array.isArray(pages)) {
+                        console.warn(`Invalid pages format for category: ${category}`);
+                        return;
+                    }
+
+                    pages.forEach(page => {
+                        if (page && page.url && page.title) {
+                            addPageToMenu(category, page.url, page.title);
+                        }
+                    });
                 });
+                saveMenuState(); // Save the updated state after adding all items
+            })
+            .catch(error => {
+                console.error('Error loading or processing JSON:', error);
+                showErrorMessage('Failed to load navigation menu');
             });
-            saveMenuState(); // Save the updated state after adding all items
-        })
-        .catch(error => console.error('Error loading JSON:', error));
+    } catch (error) {
+        console.error('Error in document ready handler:', error);
+    }
 });
 
 // Function to add a page to the navigation menu under its category
@@ -54,14 +77,42 @@ function getPageName(fileName) {
 
 // Function to save the current state of the menu to localStorage
 function saveMenuState() {
-    const menuHtml = $('#nav-menu').html();
-    localStorage.setItem('navMenuState', menuHtml);
+    try {
+        const menuHtml = $('#nav-menu').html();
+        if (menuHtml) {
+            localStorage.setItem('navMenuState', menuHtml);
+        }
+    } catch (error) {
+        console.error('Error saving menu state:', error);
+    }
 }
 
 // Function to load the menu state from localStorage
 function loadMenuState() {
-    const savedMenuHtml = localStorage.getItem('navMenuState');
-    if (savedMenuHtml) {
-        $('#nav-menu').html(savedMenuHtml);
+    try {
+        const savedMenuHtml = localStorage.getItem('navMenuState');
+        if (savedMenuHtml) {
+            $('#nav-menu').html(savedMenuHtml);
+        }
+    } catch (error) {
+        console.error('Error loading menu state:', error);
     }
+}
+
+// Function to show error message to user
+function showErrorMessage(message) {
+    const errorDiv = $('<div>')
+        .addClass('error-message')
+        .text(message)
+        .css({
+            'background-color': '#ff4444',
+            'color': 'white',
+            'padding': '10px',
+            'margin': '10px 0',
+            'border-radius': '4px',
+            'text-align': 'center'
+        });
+    
+    $('#nav-menu').before(errorDiv);
+    setTimeout(() => errorDiv.fadeOut('slow', function() { $(this).remove(); }), 5000);
 }

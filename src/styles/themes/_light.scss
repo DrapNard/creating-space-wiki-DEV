@@ -1,0 +1,26 @@
+// Light theme variables
+$primary-color: #1976d2 !default;
+$secondary-color: #e91e63 !default;
+$link-color: #1565c0 !default;
+$background: #ffffff !default;
+$background-dark: #f5f5f5 !default;
+$background-darker: #e0e0e0 !default;
+$text-color: #212121 !default;
+$border-color: #bdbdbd !default;
+$hover-color: #eeeeee !default;
+$active-color: #90caf9 !default;
+$input-bg: #ffffff !default;
+$input-border: #757575 !default;
+$shadow-color: rgba(0, 0, 0, 0.12) !default;
+$sidebar-width: 280px !default;
+
+:export {
+  primaryColor: $primary-color;
+  secondaryColor: $secondary-color;
+  linkColor: $link-color;
+  background: $background;
+  backgroundDark: $background-dark;
+  backgroundDarker: $background-darker;
+  textColor: $text-color;
+  borderColor: $border-color;
+}

@@ -1,0 +1,28 @@
+// Dark theme variables
+$primary-color: #42a5f5 !default;
+$secondary-color: #ec407a !default;
+$link-color: #90caf9 !default;
+$background: #121212 !default;
+$background-dark: #1e1e1e !default;
+$background-darker: #0a0a0a !default;
+$text-color: #e0e0e0 !default;
+$h1-color: #ffffff !default;
+$border-color: #424242 !default;
+$hover-color: #1e1e1e !default;
+$active-color: #1976d2 !default;
+$input-bg: #1e1e1e !default;
+$input-border: #616161 !default;
+$shadow-color: rgba(0, 0, 0, 0.4) !default;
+$sidebar-width: 280px !default;
+
+:export {
+  primaryColor: $primary-color;
+  secondaryColor: $secondary-color;
+  linkColor: $link-color;
+  background: $background;
+  backgroundDark: $background-dark;
+  backgroundDarker: $background-darker;
+  textColor: $text-color;
+  h1Color: $h1-color;
+  borderColor: $border-color;
+}

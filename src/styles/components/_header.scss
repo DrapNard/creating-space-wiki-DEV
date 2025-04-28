@@ -1,0 +1,56 @@
+@use 'sass:color';
+@use '../base/variables' as *;
+
+#header-placeholder {
+  background-color: #333;
+  border-bottom: 1px solid $border-color;
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+#header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    margin-bottom: 1rem;
+  }
+
+  img {
+    align-self: center;
+    margin-bottom: 1rem;
+  }
+
+  #header-content {
+    align-self: center;
+
+    nav {
+      margin-bottom: 1rem;
+
+      #nav-menu {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+      }
+    }
+
+    #search-bar {
+      padding: 0.5rem;
+      border-radius: 4px;
+      border: 1px solid $border-color;
+      background-color: $background-darker;
+      color: $text-color;
+      width: 200px;
+
+      &::placeholder {
+        color: color.scale($text-color, $lightness: -34.1517857142%);
+      }
+    }
+  }
+}
